@@ -13,4 +13,47 @@ class Application
     const ENV_STAGING = 'staging';
     const ENV_TESTING = 'testing	';
     const ENV_DEVELOPMENT = 'development';
+
+    /**
+     * @var array
+     */
+    protected $configuration;
+
+    /**
+     * @param string $env
+     * @param array $configuration
+     */
+    public function __construct($env, array $configuration)
+    {
+        $this->configuration = $configuration;
+
+        switch ($env) {
+            case self::ENV_PRODUCTION:
+            case self::ENV_STAGING:
+                ini_set('display_errors', 0);
+                ini_set('display_startup_errors', 0);
+                error_reporting(0);
+                break;
+            case self::ENV_TESTING:
+            case self::ENV_DEVELOPMENT:
+                ini_set('display_errors', 1);
+                ini_set('display_startup_errors', 1);
+                error_reporting(-1);
+                break;
+            default:
+                ini_set('display_errors', 0);
+                ini_set('display_startup_errors', 0);
+                error_reporting(0);
+        }
+
+        parent::__construct(new \Phalcon\DI\FactoryDefault());
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfiguration()
+    {
+        return $this->configuration;
+    }
 }
