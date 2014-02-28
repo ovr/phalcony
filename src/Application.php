@@ -9,5 +9,8 @@ namespace Phalcony;
 class Application
     extends \Phalcon\Mvc\Application
 {
-
+    const ENV_PRODUCTION = 'production';
+    const ENV_STAGING = 'staging';
+    const ENV_TESTING = 'testing	';
+    const ENV_DEVELOPMENT = 'development';
 }
