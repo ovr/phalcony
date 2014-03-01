@@ -22,8 +22,9 @@ class Application
     /**
      * @param string $env
      * @param array $configuration
+     * @param \Phalcon\DiInterface $di
      */
-    public function __construct($env, array $configuration)
+    public function __construct($env, array $configuration, \Phalcon\DiInterface $di = null)
     {
         $this->configuration = $configuration;
 
@@ -46,7 +47,11 @@ class Application
                 error_reporting(0);
         }
 
-        parent::__construct(new \Phalcon\DI\FactoryDefault());
+        if (is_null($di)) {
+            $di = new \Phalcon\DI\FactoryDefault();
+        }
+
+        parent::__construct($di);
     }
 
     /**
