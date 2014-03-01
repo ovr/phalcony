@@ -1,0 +1,26 @@
+{
+    "name": "zaets28rus/phalcony",
+    "description": "Library for expansion the base functional of Phalcon framework.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Phalcony\\": "src"
+        }
+    },
+    "keywords": [
+        "framework",
+        "phalcon"
+    ],
+    "authors": [
+        {
+            "name": "Patsura Dmitry",
+            "email": "zaets28rus@gmail.com"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1"
+        }
+    }
+}
