@@ -61,4 +61,24 @@ class Application
     {
         return $this->configuration;
     }
+
+    /**
+     * Get class init methods
+     *
+     * @return array
+     */
+    protected function getInitServices()
+    {
+        $class        = new \ReflectionObject($this);
+        $classMethods = $class->getMethods();
+
+        $classResources = array();
+        foreach ($classMethods as $method) {
+            if (5 < strlen($method->getName()) && 'init' === substr($method->getName(), 0, 4)) {
+                $classResources[lcfirst(substr($method->getName(), 4))] = $method;
+            }
+        }
+
+        return $classResources;
+    }
 }
