@@ -6,6 +6,8 @@
 
 namespace Phalcony;
 
+use Phalcon\Events\Manager as EventsManager;
+
 class Application
     extends \Phalcon\Mvc\Application
 {
@@ -60,6 +62,63 @@ class Application
     public function getConfiguration()
     {
         return $this->configuration;
+    }
+
+    /**
+     * Register loader
+     */
+    protected function _registerLoader()
+    {
+        $config = &$this->configuration;
+
+        $loader = new \Phalcon\Loader();
+        $loadNamespaces = array();
+
+        foreach ($config['modules'] as $module => $enabled) {
+            $moduleName = ucfirst($module);
+            $loadNamespaces[$moduleName.'\Model'] = APPLICATION_PATH . '/modules/'.$module.'/models/';
+            $loadNamespaces[$moduleName.'\Service'] = APPLICATION_PATH . '/modules/'.$module.'/services/';
+        }
+
+        $loadNamespaces['Service'] = APPLICATION_PATH . '/services/';
+
+        $loader->registerDirs($config['registerDirs'])
+            ->registerNamespaces($loadNamespaces)
+            ->register();
+
+    }
+
+    /**
+     * @return $this
+     */
+    public function bootstrap()
+    {
+        $di = $this->getDI();
+
+        $this->_registerLoader();
+        $this->registerModules($this->configuration['modules']);
+
+        $eventsManager = new EventsManager();
+        $this->setEventsManager($eventsManager);
+
+        $methods = $this->getInitServices();
+        foreach($methods as $name => $method) {
+            $returnValue = $this->{$method->getName()}();
+            $di->set($name, function() use($returnValue) {return $returnValue;});
+        }
+
+        iconv_set_encoding('internal_encoding', 'UTF-8');
+        setlocale(LC_ALL, 'ru_RU.UTF-8');
+
+        return $this;
+    }
+
+    /**
+     * Run app
+     */
+    public function run()
+    {
+        $this->handle($_SERVER['REQUEST_URI'])->send();
     }
 
     /**
