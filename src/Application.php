@@ -9,8 +9,7 @@ namespace Phalcony;
 use Phalcon\Events\Manager as EventsManager;
 use Phalcony\Stdlib\Hydrator\ClassMethods;
 
-class Application
-    extends \Phalcon\Mvc\Application
+class Application extends \Phalcon\Mvc\Application
 {
     const ENV_PRODUCTION = 'production';
     const ENV_STAGING = 'staging';
@@ -107,7 +106,7 @@ class Application
             }
 
             if (count($this->configuration['services']) > 0) {
-                foreach($this->configuration['services'] as $diServiceName => $serviceParameters) {
+                foreach ($this->configuration['services'] as $diServiceName => $serviceParameters) {
                     $class = $serviceParameters['class'];
 
                     if (gettype($class) != 'object') {

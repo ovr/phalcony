@@ -17,7 +17,7 @@ class Debug
      * @param bool $echo
      * @return string
      */
-    static public function dump($variable, $echo = true)
+    public static function dump($variable, $echo = true)
     {
         ob_start();
         var_dump($variable);

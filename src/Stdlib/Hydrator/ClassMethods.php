@@ -8,12 +8,14 @@ namespace Phalcony\Stdlib\Hydrator;
 
 use BadMethodCallException;
 
-class ClassMethods {
-    static public function hydrate(array $data, $object)
+class ClassMethods
+{
+    public static function hydrate(array $data, $object)
     {
         if (!is_object($object)) {
             throw new BadMethodCallException(sprintf(
-                '%s expects the provided $object to be a PHP object)', __METHOD__
+                '%s expects the provided $object to be a PHP object)',
+                __METHOD__
             ));
         }
 
@@ -26,7 +28,6 @@ class ClassMethods {
             $method = 'set' . ucfirst($property);
 
             if (method_exists($object, $method)) {
-
                 $object->$method($value);
             }
         }
