@@ -8,8 +8,7 @@ namespace Phalcony\Stdlib\Hydrator;
 
 use BadMethodCallException;
 
-class ClassProperties
-    implements HydratorInterface
+class ClassProperties implements HydratorInterface
 {
     public static function hydrate(array $data, $object)
     {
