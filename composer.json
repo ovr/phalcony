@@ -12,7 +12,8 @@
         "php": "~5.3"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "1.5.2"
+        "squizlabs/php_codesniffer": "1.5.2",
+        "phpunit/phpunit": "4.0.*@dev"
     },
     "keywords": [
         "framework",
