@@ -14,7 +14,7 @@ class ClassMethods implements HydratorInterface
     {
         if (!is_object($object)) {
             throw new BadMethodCallException(sprintf(
-                '%s expects the provided $object to be a PHP object)',
+                '%s expects the provided $object to be a PHP object',
                 __METHOD__
             ));
         }
