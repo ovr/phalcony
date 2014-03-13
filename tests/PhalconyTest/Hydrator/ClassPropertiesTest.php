@@ -7,6 +7,7 @@
 namespace Phalcony\Test\Hydrator;
 
 use Phalcony\Stdlib\Hydrator\ClassProperties;
+use Phalcony\Test\Object;
 
 class ClassPropertiesTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,7 +19,7 @@ class ClassPropertiesTest extends \PHPUnit_Framework_TestCase
 
     public function testHydrateSuccess()
     {
-        $object = new \Phalcony\Test\Object();
+        $object = new Object();
 
         $this->assertEquals(null, $object->property1);
         $this->assertEquals(null, $object->property2);
