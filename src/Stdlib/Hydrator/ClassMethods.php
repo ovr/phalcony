@@ -19,11 +19,6 @@ class ClassMethods implements HydratorInterface
             ));
         }
 
-        $transform = function ($letters) {
-            $letter = substr(array_shift($letters), 1, 1);
-            return ucfirst($letter);
-        };
-
         foreach ($data as $property => $value) {
             $method = 'set' . ucfirst($property);
 
