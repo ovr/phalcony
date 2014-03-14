@@ -15,3 +15,6 @@ install:
 script:
  - vendor/bin/phpcs --standard=PSR2 --report=emacs --extensions=php --warning-severity=0 src/
  - vendor/bin/phpunit
+
+after_script:
+ - vendor/bin/coveralls -v --exclude-no-stmt
