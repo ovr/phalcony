@@ -2,6 +2,7 @@ Phalcony
 ========
 
 [![Build Status](https://travis-ci.org/ovr/phalcony.png?branch=master)](https://travis-ci.org/ovr/phalcony)
+[![Coverage Status](https://coveralls.io/repos/ovr/phalcony/badge.png?branch=master)](https://coveralls.io/r/ovr/phalcony?branch=master)
 
 Library for expansion the base functional of Phalcon framework.
 
