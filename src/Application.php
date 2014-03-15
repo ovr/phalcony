@@ -30,7 +30,7 @@ class Application extends \Phalcon\Mvc\Application
     {
         $this->configuration = $configuration;
 
-        switch ($env) {
+        switch (strtolower($env)) {
             case self::ENV_PRODUCTION:
             case self::ENV_STAGING:
                 ini_set('display_errors', 0);
