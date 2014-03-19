@@ -22,15 +22,21 @@ class Application extends \Phalcon\Mvc\Application
     protected $configuration;
 
     /**
+     * @var string
+     */
+    protected $env;
+
+    /**
      * @param string $env
      * @param array $configuration
      * @param \Phalcon\DiInterface $di
      */
     public function __construct($env, array $configuration, \Phalcon\DiInterface $di = null)
     {
+        $this->env = strtolower($env);
         $this->configuration = $configuration;
 
-        switch (strtolower($env)) {
+        switch ($this->env) {
             case self::ENV_PRODUCTION:
             case self::ENV_STAGING:
                 ini_set('display_errors', 0);
@@ -54,14 +60,6 @@ class Application extends \Phalcon\Mvc\Application
         }
 
         parent::__construct($di);
-    }
-
-    /**
-     * @return array
-     */
-    public function getConfiguration()
-    {
-        return $this->configuration;
     }
 
     /**
@@ -137,5 +135,21 @@ class Application extends \Phalcon\Mvc\Application
     public function run()
     {
         $this->handle($_SERVER['REQUEST_URI'])->send();
+    }
+
+    /**
+     * @return string
+     */
+    public function getEnv()
+    {
+        return $this->env;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfiguration()
+    {
+        return $this->configuration;
     }
 }
