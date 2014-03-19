@@ -128,13 +128,15 @@ class Application extends \Phalcon\Mvc\Application
 
         return $this;
     }
-
+    
     /**
      * Run app
+     *
+     * @param null $uri
      */
-    public function run()
+    public function run($uri = null)
     {
-        $this->handle($_SERVER['REQUEST_URI'])->send();
+        $this->handle($uri)->send();
     }
 
     /**
