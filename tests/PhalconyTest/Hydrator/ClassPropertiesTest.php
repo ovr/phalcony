@@ -4,7 +4,7 @@
  * @author: Patsura Dmitry <zaets28rus@gmail.com>
  */
 
-namespace Phalcony\Test\Hydrator;
+namespace PhalconyTest\Hydrator;
 
 use Phalcony\Stdlib\Hydrator\ClassProperties;
 use Phalcony\Test\Object;
