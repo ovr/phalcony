@@ -8,16 +8,20 @@ namespace Phalcony\Validator;
 
 class Inn extends AbstractValidator
 {
+    const WRONG_LENGTH = 'wrong_length';
+    const NOT_NUMERIC = 'not_numeric';
+
     /**
      * Validate inn number
      *
      * @param $value
-     * @return bool
+     * @return bool|mixed
+     * @throws Exception
      */
-    public function isValid($value)
+    public function validate($value)
     {
         if (!is_numeric($value)) {
-            return false;
+            throw new Exception(self::NOT_NUMERIC);
         }
 
         switch(strlen($value)) {
@@ -46,7 +50,5 @@ class Inn extends AbstractValidator
                 return $value[11] === $num11 && $value[10] === $num10;
                 break;
         }
-
-        return false;
     }
 }

@@ -128,7 +128,7 @@ class Application extends \Phalcon\Mvc\Application
 
         return $this;
     }
-    
+
     /**
      * Run app
      *
