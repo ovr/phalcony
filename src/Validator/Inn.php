@@ -8,8 +8,8 @@ namespace Phalcony\Validator;
 
 class Inn extends AbstractValidator
 {
-    CONST WRONG_LENGTH = 'wrong_length';
-    CONST NOT_NUMERIC = 'not_numeric';
+    const WRONG_LENGTH = 'wrong_length';
+    const NOT_NUMERIC = 'not_numeric';
 
     /**
      * Validate inn number
