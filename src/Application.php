@@ -85,18 +85,13 @@ class Application extends \Phalcon\Mvc\Application
     }
 
     /**
-     * @return $this
+     * Register di services
+     *
      * @throws \Exception
      */
-    public function bootstrap()
+    public function registerServices()
     {
         $di = $this->getDI();
-
-        $this->registerLoader();
-        $this->registerModules($this->configuration['application']['modules']);
-
-        $eventsManager = new EventsManager();
-        $this->setEventsManager($eventsManager);
 
         if (isset($this->configuration['services'])) {
             if (!is_array($this->configuration['services'])) {
@@ -125,6 +120,21 @@ class Application extends \Phalcon\Mvc\Application
                 }
             }
         }
+    }
+
+    /**
+     * @return $this
+     * @throws \Exception
+     */
+    public function bootstrap()
+    {
+        $this->registerLoader();
+        $this->registerModules($this->configuration['application']['modules']);
+
+        $eventsManager = new EventsManager();
+        $this->setEventsManager($eventsManager);
+
+        $this->registerServices();
 
         return $this;
     }
