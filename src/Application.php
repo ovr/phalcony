@@ -65,7 +65,7 @@ class Application extends \Phalcon\Mvc\Application
     /**
      * Register loader
      */
-    protected function _registerLoader()
+    protected function registerLoader()
     {
         $config = &$this->configuration;
 
@@ -92,7 +92,7 @@ class Application extends \Phalcon\Mvc\Application
     {
         $di = $this->getDI();
 
-        $this->_registerLoader();
+        $this->registerLoader();
         $this->registerModules($this->configuration['application']['modules']);
 
         $eventsManager = new EventsManager();
