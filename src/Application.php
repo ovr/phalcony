@@ -102,7 +102,9 @@ class Application extends \Phalcon\Mvc\Application
                 foreach ($this->configuration['services'] as $diServiceName => $serviceParameters) {
                     $class = $serviceParameters['class'];
 
-                    if (gettype($class) != 'object') {
+                    if (is_callable($class)) {
+                        $service = $class($di);
+                    } else if (gettype($class) != 'object') {
                         if (isset($serviceParameters['__construct'])) {
                             $service = new $class($serviceParameters['__construct']);
                         } else {
