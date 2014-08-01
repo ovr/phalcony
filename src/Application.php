@@ -70,7 +70,12 @@ class Application extends \Phalcon\Mvc\Application
         $config = &$this->configuration;
 
         $loader = new \Phalcon\Loader();
-        $loadNamespaces = $config['application']['registerNamespaces'];
+
+        if (isset($config['application']['registerNamespaces'])) {
+            $loadNamespaces = $config['application']['registerNamespaces'];
+        } else {
+            $loadNamespaces = array();
+        }
 
         foreach ($config['application']['modules'] as $module => $enabled) {
             $moduleName = ucfirst($module);
@@ -78,8 +83,11 @@ class Application extends \Phalcon\Mvc\Application
             $loadNamespaces[$moduleName.'\Service'] = APPLICATION_PATH . '/modules/'.$module.'/services/';
         }
 
-        $loader->registerDirs($config['application']['registerDirs'])
-            ->registerNamespaces($loadNamespaces)
+        if (isset($config['application']['registerDirs'])) {
+            $loader->registerDirs($config['application']['registerDirs']);
+        }
+
+        $loader->registerNamespaces($loadNamespaces)
             ->register();
 
     }
