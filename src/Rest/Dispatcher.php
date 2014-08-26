@@ -34,10 +34,10 @@ class Dispatcher extends \Phalcon\Mvc\Dispatcher
             $controller = parent::dispatch();
         } catch (\Exception $e) {
 
-            $this->forward($this->errorPath);
-            $this->setModuleName($this->errorPath['module']);
-            $this->setControllerName($this->errorPath['controller']);
-            $this->setActionName($this->errorPath['action']);
+            $this->forward($this->exceptionPath);
+            $this->setModuleName($this->exceptionPath['module']);
+            $this->setControllerName($this->exceptionPath['controller']);
+            $this->setActionName($this->exceptionPath['action']);
             $this->setParam('exception', $e);
 
             return $this->dispatch();
