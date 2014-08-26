@@ -30,7 +30,18 @@ class Dispatcher extends \Phalcon\Mvc\Dispatcher
 
     public function dispatch()
     {
-        $controller = parent::dispatch();
+        try {
+            $controller = parent::dispatch();
+        } catch (\Exception $e) {
+
+            $this->forward($this->errorPath);
+            $this->setModuleName($this->errorPath['module']);
+            $this->setControllerName($this->errorPath['controller']);
+            $this->setActionName($this->errorPath['action']);
+            $this->setParam('exception', $e);
+
+            return $this->dispatch();
+        }
 
         /**
          * @var $response \Phalcon\Http\Response
