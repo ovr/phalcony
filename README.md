@@ -5,7 +5,12 @@ Phalcony
 [![Coverage Status](https://coveralls.io/repos/ovr/phalcony/badge.png?branch=master)](https://coveralls.io/r/ovr/phalcony?branch=master)
 [![License](https://poser.pugx.org/ovr/phalcony/license.svg)](https://packagist.org/packages/ovr/phalcony)
 
-Library for expansion the base functional of Phalcon framework.
+<img align="right" height="300" src="http://dmtry.me/img/logos/phalcony.svg">
+
+> Library for expansion the base functional of Phalcon framework.
+
+This library is main component of phalcon-module-skeleton and It was created for move repeated function from all projects to
+on project on github.
 
 ## Installation
 
