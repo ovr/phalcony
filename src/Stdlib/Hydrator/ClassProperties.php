@@ -1,7 +1,6 @@
 <?php
 /**
- * @author: Patsura Dmitry <zaets28rus@gmail.com>
- * @date: 08.03.14 22:07
+ * @author: Patsura Dmitry http://github.com/ovr <talk@dmtry.me>
  */
 
 namespace Phalcony\Stdlib\Hydrator;

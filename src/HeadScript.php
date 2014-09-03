@@ -1,7 +1,6 @@
 <?php
 /**
- * @author: Patsura Dmitry <zaets28rus@gmail.com>
- * @date: 07.03.14 15:19
+ * @author: Patsura Dmitry http://github.com/ovr <talk@dmtry.me>
  */
 
 namespace Phalcony;

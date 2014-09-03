@@ -1,7 +1,6 @@
 <?php
 /**
- * @author: Patsura Dmitry <zaets28rus@gmail.com>
- * @date: 19.03.21 22:18
+ * @author: Patsura Dmitry http://github.com/ovr <talk@dmtry.me>
  */
 
 namespace Phalcony\Validator;
