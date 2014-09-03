@@ -12,29 +12,29 @@ namespace Phalcony;
  */
 class HeadScript
 {
-	protected $vars = array();
+    protected $vars = array();
 
-	/**
-	 * @param $key
-	 * @param $value
-	 */
-	public function addVar($key, $value)
-	{
-		$this->vars[$key] = $value;
-	}
+    /**
+     * @param $key
+     * @param $value
+     */
+    public function addVar($key, $value)
+    {
+        $this->vars[$key] = $value;
+    }
 
-	public function __toString()
-	{
-		if (count($this->vars) == 0) {
-			return '';
-		}
+    public function __toString()
+    {
+        if (count($this->vars) == 0) {
+            return '';
+        }
 
-		$html = '<script type="text/javascript">'."\n";
+        $html = '<script type="text/javascript">' . "\n";
 
-		foreach($this->vars as $key => $value) {
-			$html .= "\t\tvar ".$key.' = '.json_encode($value).";\n";
-		}
+        foreach ($this->vars as $key => $value) {
+            $html .= "\t\tvar " . $key . ' = ' . json_encode($value) . ";\n";
+        }
 
-		return $html . "\t" . '</script>';
-	}
-} 
+        return $html . "\t" . '</script>';
+    }
+}
