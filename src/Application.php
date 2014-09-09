@@ -122,7 +122,13 @@ class Application extends \Phalcon\Mvc\Application
                         $service = $class;
                     } else if (isset($serviceParameters['__construct'])) {
                         $shared = true;
-                        $service = new $class($serviceParameters['__construct']);
+
+                        if (!is_array($serviceParameters)) {
+                            throw new \Exception('Parameters for service : "' . $serviceName . '" must be array');
+                        }
+
+                        $reflector = new \ReflectionClass($class);
+                        $service = $reflector->newInstanceArgs($serviceParameters);
                     } else {
                         if ($shared) {
                             $service = new $class();
