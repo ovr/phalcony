@@ -108,27 +108,37 @@ class Application extends \Phalcon\Mvc\Application
                     $class = $serviceParameters['class'];
 
                     $shared = false;
+                    $service = false;
 
                     if (isset($serviceParameters['shared'])) {
-                        $shared = (boolean)$serviceParameters['shared'];
+                        $shared = (boolean) $serviceParameters['shared'];
                     }
 
                     if (is_callable($class)) {
                         $shared = true;
                         $service = $class($this);
-                    } else if (!is_object($class)) {
-                        if (isset($serviceParameters['__construct'])) {
-                            $shared = true;
-                            $service = new $class($serviceParameters['__construct']);
+                    } else if (is_object($class)) {
+                        $shared = true;
+                        $service = $class;
+                    } else if (isset($serviceParameters['__construct'])) {
+                        $shared = true;
+                        $service = new $class($serviceParameters['__construct']);;
+                    } else {
+                        if ($shared) {
+                            $service = new $class();
                         } else {
                             $service = $class;
                         }
-                    } else {
-                        $service = $class;
                     }
 
                     if (isset($serviceParameters['parameters'])) {
+                        if ($shared === false) {
+                            throw new \Exception('Service: "' . $serviceName . '" with parameters must be shared');
+                        }
+
                         $service = ClassMethods::hydrate($serviceParameters['parameters'], $service);
+
+                        $di->set($serviceName, $service, $shared);
                     }
 
                     $di->set($serviceName, $service, $shared);
