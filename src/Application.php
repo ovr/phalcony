@@ -128,7 +128,7 @@ class Application extends \Phalcon\Mvc\Application
                         }
 
                         $reflector = new \ReflectionClass($class);
-                        $service = $reflector->newInstanceArgs($serviceParameters);
+                        $service = $reflector->newInstanceArgs($serviceParameters['__construct']);
                     } else {
                         if ($shared) {
                             $service = new $class();
