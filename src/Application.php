@@ -106,7 +106,7 @@ class Application extends \Phalcon\Mvc\Application
             }
 
             if (count($this->configuration['services']) > 0) {
-                foreach ($this->configuration['services'] as $diServiceName => $serviceParameters) {
+                foreach ($this->configuration['services'] as $serviceName => $serviceParameters) {
                     $class = $serviceParameters['class'];
 
                     if (is_callable($class)) {
@@ -125,7 +125,7 @@ class Application extends \Phalcon\Mvc\Application
                         $service = ClassMethods::hydrate($serviceParameters['parameters'], $service);
                     }
 
-                    $di->set($diServiceName, $service);
+                    $di->set($serviceName, $service);
                 }
             }
         }
