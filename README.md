@@ -27,7 +27,7 @@ Create the composer.json file as follows:
 ```json
 {
     "require": {
-        "ovr/phalcony": "0.1"
+        "ovr/phalcony": "~0.2"
     }
 }
 ```
