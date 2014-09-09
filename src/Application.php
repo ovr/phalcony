@@ -49,9 +49,7 @@ class Application extends \Phalcon\Mvc\Application
                 error_reporting(-1);
                 break;
             default:
-                ini_set('display_errors', 0);
-                ini_set('display_startup_errors', 0);
-                error_reporting(0);
+                throw new \Exception('Wrong application $env passed: ' . $env);
         }
 
         if (is_null($di)) {
@@ -78,8 +76,8 @@ class Application extends \Phalcon\Mvc\Application
 
         foreach ($config['application']['modules'] as $module => $enabled) {
             $moduleName = ucfirst($module);
-            $loadNamespaces[$moduleName.'\Model'] = APPLICATION_PATH . '/modules/'.$module.'/models/';
-            $loadNamespaces[$moduleName.'\Service'] = APPLICATION_PATH . '/modules/'.$module.'/services/';
+            $loadNamespaces[$moduleName . '\Model'] = APPLICATION_PATH . '/modules/' . $module . '/models/';
+            $loadNamespaces[$moduleName . '\Service'] = APPLICATION_PATH . '/modules/' . $module . '/services/';
         }
 
         if (isset($config['application']['registerDirs'])) {
@@ -112,7 +110,7 @@ class Application extends \Phalcon\Mvc\Application
                     $shared = false;
 
                     if (isset($serviceParameters['shared'])) {
-                        $shared = (boolean) $serviceParameters['shared'];
+                        $shared = (boolean)$serviceParameters['shared'];
                     }
 
                     if (is_callable($class)) {
