@@ -109,11 +109,19 @@ class Application extends \Phalcon\Mvc\Application
                 foreach ($this->configuration['services'] as $serviceName => $serviceParameters) {
                     $class = $serviceParameters['class'];
 
+                    $shared = false;
+
+                    if (isset($serviceParameters['shared'])) {
+                        $shared = (boolean) $serviceParameters['shared'];
+                    }
+
                     if (is_callable($class)) {
                         $service = $class($this);
                     } else if (gettype($class) != 'object') {
                         if (isset($serviceParameters['__construct'])) {
                             $service = new $class($serviceParameters['__construct']);
+
+                            $shared = true;
                         } else {
                             $service = $class;
                         }
@@ -125,7 +133,7 @@ class Application extends \Phalcon\Mvc\Application
                         $service = ClassMethods::hydrate($serviceParameters['parameters'], $service);
                     }
 
-                    $di->set($serviceName, $service);
+                    $di->set($serviceName, $service, $shared);
                 }
             }
         }
