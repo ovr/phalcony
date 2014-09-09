@@ -115,7 +115,7 @@ class Application extends \Phalcon\Mvc\Application
 
                     if (is_callable($class)) {
                         $service = $class($this);
-                    } else if (gettype($class) != 'object') {
+                    } else if (!is_object($class)) {
                         if (isset($serviceParameters['__construct'])) {
                             $service = new $class($serviceParameters['__construct']);
 
