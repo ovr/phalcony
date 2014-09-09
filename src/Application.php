@@ -114,12 +114,12 @@ class Application extends \Phalcon\Mvc\Application
                     }
 
                     if (is_callable($class)) {
+                        $shared = true;
                         $service = $class($this);
                     } else if (!is_object($class)) {
                         if (isset($serviceParameters['__construct'])) {
-                            $service = new $class($serviceParameters['__construct']);
-
                             $shared = true;
+                            $service = new $class($serviceParameters['__construct']);
                         } else {
                             $service = $class;
                         }
