@@ -166,6 +166,7 @@ class Application extends \Phalcon\Mvc\Application
         $this->setEventsManager($eventsManager);
 
         $this->registerServices();
+        $this->di->set('application', $this, true);
 
         return $this;
     }
