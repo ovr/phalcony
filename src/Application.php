@@ -196,4 +196,19 @@ class Application extends \Phalcon\Mvc\Application
     {
         return $this->configuration;
     }
+
+    /**
+     * Get custom service parameters
+     *
+     * @param $serviceName
+     * @return mixed
+     */
+    public function getParameters($serviceName)
+    {
+        if (isset($this->configuration['parameters'][$serviceName])) {
+            return $this->configuration['parameters'][$serviceName];
+        }
+
+        throw new \InvalidArgumentException('Wront serivce : '.$serviceName.' passed to fetch from parameters');
+    }
 }
