@@ -9,8 +9,7 @@ Phalcony
 
 > Library for expansion the base functional of Phalcon framework.
 
-This library is main component of phalcon-module-skeleton and It was created for move repeated function from all projects to
-on project on github.
+This library is main component of phalcon-module-skeleton and It was created to move repeated function from all projects to on project on github.
 
 ## Installation
 
