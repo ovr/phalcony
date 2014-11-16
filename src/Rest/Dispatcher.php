@@ -35,7 +35,11 @@ class Dispatcher extends \Phalcon\Mvc\Dispatcher
         } catch (\Exception $e) {
 
             $this->forward($this->exceptionPath);
-            $this->setModuleName($this->exceptionPath['module']);
+            
+            if (isset($this->exceptionPath['module'])) {
+                $this->setModuleName($this->exceptionPath['module']);
+            }
+
             $this->setControllerName($this->exceptionPath['controller']);
             $this->setActionName($this->exceptionPath['action']);
             $this->setParam('exception', $e);
