@@ -39,4 +39,5 @@ php composer.phar install
 
 License
 -------
+
 Phalcony is open-sourced software licensed under the MIT License. See the LICENSE file for more information.
