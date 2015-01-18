@@ -29,6 +29,7 @@ class Application extends \Phalcon\Mvc\Application
      * @param string $env
      * @param array $configuration
      * @param \Phalcon\DiInterface $di
+     * @throws \Exception
      */
     public function __construct($env, array $configuration, \Phalcon\DiInterface $di = null)
     {
@@ -209,6 +210,6 @@ class Application extends \Phalcon\Mvc\Application
             return $this->configuration['parameters'][$serviceName];
         }
 
-        throw new \InvalidArgumentException('Wront serivce : '.$serviceName.' passed to fetch from parameters');
+        throw new \InvalidArgumentException('Wrong service : '.$serviceName.' passed to fetch from parameters');
     }
 }
