@@ -7,6 +7,7 @@ namespace Phalcony;
 
 use Phalcon\Events\Manager as EventsManager;
 use Phalcony\Stdlib\Hydrator\ClassMethods;
+use InvalidArgumentException;
 
 class Application extends \Phalcon\Mvc\Application
 {
@@ -210,6 +211,6 @@ class Application extends \Phalcon\Mvc\Application
             return $this->configuration['parameters'][$serviceName];
         }
 
-        throw new \InvalidArgumentException('Wrong service : '.$serviceName.' passed to fetch from parameters');
+        throw new InvalidArgumentException('Wrong service : '.$serviceName.' passed to fetch from parameters');
     }
 }
