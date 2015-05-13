@@ -1,5 +1,7 @@
 Phalcony
 ========
+
+[![Phalconist](http://phalconist.com/ovr/phalcony/default.svg)](http://phalconist.com/ovr/phalcony)
 [![Latest Stable Version](https://poser.pugx.org/ovr/phalcony/v/stable.svg)](https://packagist.org/packages/ovr/phalcony)
 [![Build Status](https://travis-ci.org/ovr/phalcony.png?branch=master)](https://travis-ci.org/ovr/phalcony)
 [![Coverage Status](https://coveralls.io/repos/ovr/phalcony/badge.png?branch=master)](https://coveralls.io/r/ovr/phalcony?branch=master)
