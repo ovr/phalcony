@@ -42,7 +42,13 @@ class Dispatcher extends \Phalcon\Mvc\Dispatcher
 
             $this->setControllerName($this->exceptionPath['controller']);
             $this->setActionName($this->exceptionPath['action']);
-            $this->setParam('exception', $e);
+            
+            /**
+             * @todo Change to setParam after fix of Zephir's bug
+             */ 
+            $this->setParams(array(
+                'exception' => $e
+            ));
 
             return $this->dispatch();
         }
